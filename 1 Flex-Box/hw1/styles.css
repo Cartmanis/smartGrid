@@ -1,0 +1,138 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+menu {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,
+img,
+abbr {
+	border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul li,
+menu li {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+legend {
+	color: #000;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+/* styles */
+
+.meta {
+	background: #ddd;
+	padding: 5px 0;
+	overflow: hidden;
+	font-size: 20px;
+}
+
+.meta .article {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 600px;
+	padding: 5px;
+	margin: 20px auto;
+	border: 1px solid black;
+	border-radius: 10px;
+	/* переносим все в центр, кроме cat - для него сработает
+	 margin: 0 auto 0 0; */
+	justify-content: center;
+}
+
+/*Очень долго мучался пытаясь выставить margin: 0 0 0 auto для даты, а нужно
+было всего лишь категорию прикрепить к левому краю навсегда, при таком
+подходе дата изначально окажется вправо, а при срабатывания wrap для даты
+сработает justify-content: center*/
+
+.meta .article .cat {
+	margin: 0 auto 0 0;
+}
+
+/* positions */

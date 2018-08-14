@@ -1,0 +1,150 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+menu {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,
+img,
+abbr {
+	border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul li,
+menu li {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+legend {
+	color: #000;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+/* styles */
+
+/* для img всегда ставим ( по крайне мере для flex) max-width: 100%;*/
+
+img {
+	max-width: 100%;
+}
+
+.wrap {
+	/*устанавливаем flex-контэйнер */
+	display: flex;
+	/* разрешаем перенос на новую строку, если элементы не влезают 
+	в контэйнер по ширине */
+	flex-wrap: wrap;
+	max-width: 960px;
+	margin: 0 auto;
+	height: 100%;
+	padding: 0 5px;
+	overflow: hidden;
+	justify-content: center;
+}
+
+section.profit {
+	background: #232324;
+	padding: 15px 0;
+}
+
+section.profit .item {
+	margin: 5px;
+	/* по сути у меня в дз то же решение, но у меня наоборот было
+	min-width: 30%, а flex-basis: 150px(сделал 162, потому, что думал, что
+	необходимо учитывать margin и border). По факту у меня просто дисплей 
+	слишком маленьким не становился */
+	min-width: 150px;
+	/* flex-grow: 0; flex-shrink: 1, flex-basis: 30% */
+	flex: 0 1 30%;
+	/* не учитываем рамки в расчетах */
+	box-sizing: border-box;
+	border: 3px solid #fff;
+	text-align: center;
+	background: #fff;
+}
+
+/* positions */

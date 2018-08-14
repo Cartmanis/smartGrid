@@ -1,0 +1,54 @@
+.wraper {
+    max-width: 1180px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 5px;
+    overflow: hidden;
+}
+
+section.profit {
+    background: #232324;
+    padding: 15px 0;
+}
+
+/*flex контэйнер */
+
+section.profit .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid yellow;
+}
+
+/*группа контейнеров 
+Работает как flex контейнер, так и flex элемент
+По умолчанию две группы контейнеров не встают рядом с друг другом, так как они занимают по сути столько же места, что и у их родителя и 
+одна обертка занимает всю строку */
+
+section.profit .row .items-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Устанавливаем для группы контэейнров свой flex basis, так как они еще и flex элементы
+     520px = 230px * 2 + 15*4(по 2 маргина на каждый item = 460 + 60 = 520px */
+    flex-basis: 520px;
+    border: 3px solid green;
+}
+
+/*flex элемент */
+
+section.profit .item {
+    text-align: center;
+    margin: 15px;
+    flex-basis: 230px;
+}
+
+section.profit .item .subtitle {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 3px 0;
+}
+
+section.profit .item .text {
+    color: #d94948;
+}

@@ -1,0 +1,177 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+menu {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,
+img,
+abbr {
+	border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul li,
+menu li {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+sup {
+	vertical-align: text-top;
+}
+
+sub {
+	vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+legend {
+	color: #000;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+/* styles */
+
+/* Для изоброжений вообще всегда нужно проставлять max-width: 100% */
+
+img {
+	max-width: 100%;
+}
+
+/*Задачи с вложеннными flex-box лучше начинать изнутри, а не отсюда как начал я */
+
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 960px;
+	margin: 0 auto;
+	height: 100%;
+	padding: 0 5px;
+	overflow: hidden;
+}
+
+section.profit {
+	background: #232324;
+	padding: 15px 0;
+}
+
+section.profit .item {
+	display: flex;
+	/* У меня в дз flex-wrap: wrap был через media запрос, так как я
+	когда выставлял flex-basis в 100 и 300 px не учитывал margin...*/
+	flex-wrap: wrap;
+	margin: 5px;
+	min-width: 45%;
+	flex: 1 1 400px;
+	border: 3px solid #fff;
+	text-align: center;
+	background: #fff;
+}
+
+section.profit .item .img {
+	/* flex-grow делит только свободное пространство, поэтому пропорция 3:1 из 
+	условия задачи сработает, только если и контент у img и text также будет
+	3:1 (Например текст 300px, а картинка 100px) в остальных случаях расчеты 
+	будут с погрешностями. То есть при работе с пропорциями flex-grow 
+	желательно, чтобы пропорции у исходных элементов уже совпадали с 
+	пропорциями flex-grow (300 и 100 у базисов и 3:1 у grow)*/
+	flex: 1 1 100px;
+}
+
+/*Медиа - запрос - если экран становится менее 820px*/
+
+@media screen and (max-width: 840px) {
+	/*меняем изображение и текст местами */
+	section.profit .item:nth-child(2n) {
+		flex-direction: row-reverse;
+	}
+}
+
+section.profit .item .text {
+	/*flex-grow делит только свободное пространство, поэтому пропорция 3:1 из 
+	условия задачи сработает, только если и контент у img и text также будет
+	3:1 (Например текст 300px, а картинка 100px) в остальных случаях расчеты 
+	будут с погрешностями*/
+	flex: 3 1 290px;
+	/* 290, так маргин слева и справа по 5px */
+	margin: 0 5px;
+	text-align: left;
+	font-style: italic;
+}
+
+/* positions */
