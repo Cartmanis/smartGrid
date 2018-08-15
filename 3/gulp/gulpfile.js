@@ -3,6 +3,7 @@ const gulp = require('gulp'); //модуль gulp
 const autoprefixer = require('gulp-autoprefixer'); //модуль автопрефиксов
 const cleanCSS = require('gulp-clean-css'); //модуль минификации css файлов
 const browserSync = require('browser-sync').create(); //модуль синхронизации кода с браузером. -чтобы постоянно не нажимать F5
+const sourcemaps = require('gulp-sourcemaps'); //модуль для удобной работы в браузере с минифицированными файлами
 
 //В этом объекте храним повторяющиеся пути нужные для gulp
 const config = {
@@ -19,12 +20,14 @@ const config = {
 gulp.task('build', function () {
     //Запускаем gulp - **/ *.css означает, что мы ещем все вложенные папки */ 
     gulp.src(config.src + config.css.src)
+        .pipe(sourcemaps.init())
         .pipe(autoprefixer({ //pipe автопрефикса(команды можно найти в документации gulp)
             browsers: ['last 2 versions'],
             cascade: false
         }))
         .pipe(cleanCSS())
-        .pipe(gulp.dest(config.src + config.css.dest)) //указываем куда мы получим обработанные файлы
+        .pipe(sourcemaps.write('.')) //вызываем до dest
+        .pipe(gulp.dest(config.src + config.css.dest)) //указываем куда мы получим обработанные файлы        
         .pipe(browserSync.reload({ //обновляем изменения в браузере (F5)
             stream: true
         }));
