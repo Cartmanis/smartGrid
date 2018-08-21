@@ -1,0 +1,105 @@
+//импорт других файлов стилей в основной - переменных и сброса
+@import 'vars.less';
+@import 'reset.less';
+@import 'relations.less';
+@import 'grid.less';
+
+/*Просто внешний контэйнер, ограничный по ширине на 1280px, выравнен по центру и
+имеет внутренние отступы слева и справа */
+
+.wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+
+/*ставим flex-grow: 1 и flex-basis: 100% для большой картинки */
+
+.big {
+	background-color: @colorYellow;
+	flex: 1 1 100%;
+	width: 40%;
+
+	/*Применяется блок стилей из grid.less*/
+	.md-block( {
+		width: 70%;
+		background-color: #00ff00;
+	});	
+}
+
+/*ставим flex-grow: 1 и flex-basis: 100% для блоков с 2-я маленькими картинками 
+wrap тут не ставим, так как переносить картинки мы не хотим*/
+
+.product {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 100%;
+	width: 30%;
+
+	.md(flex, 1 1 50%);
+}
+
+.product1 {
+	order: -1;
+	.md(order, 0);
+}
+
+/*flex-basis: 50% - половина от родительского элемента */
+
+.item {
+	flex: 1 1 50%;
+	/*в less можно писать media или псевдоклассы прямо внутри селекторов */
+	/*& делает item:hover без пробелов*/
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.item1 {
+	//использование переменной из vars.less
+	background-color: @color_blue_light; 
+}
+
+.item2 {
+	background-color: @colorBlueDark;
+}
+
+.item3 {
+	background: @colorBlueDark;
+}
+
+.item4 {
+	background: @color_blue_light;
+}
+
+
+
+/*Для телефонов ставим flex-wrap: nowrap, чтобы элементы были в столбик
+и убираем распорку позиционирования .relation__ratio */
+
+@media screen and (max-width: 560px) {
+	.relation__ratio {
+		display: none;
+	}
+	.relation__content {
+		flex-wrap: nowrap;
+		position: static;
+	}
+	.big,
+	.product {
+		width: auto;
+	}
+}
+
+.profit .row {
+	.row-flex();
+	.md(justify-content, center);
+
+	.item-row {
+		.col();
+		.size(4);
+		.size-md(6);
+
+		text-align: center;
+	}
+}

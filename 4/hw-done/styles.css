@@ -1,0 +1,148 @@
+/* Для изоброжений вообще всегда нужно проставлять max-width: 100% */
+
+ img {
+	max-width: 100%;
+	cursor: pointer;	
+} 
+
+/*Задачи с вложеннными flex-box лучше начинать изнутри, а не отсюда как начал я */
+
+.relation {
+	position: relative;	
+}
+
+.relation__ratio {
+	height: 0;
+}
+
+/*Расталкивает элементы на 56.25% %, расчитывается от ширины, а не от высоты */
+
+.relation__16x9 {
+	padding-top: 56.25%;
+}
+
+.relation__3x2 { /*Пропорция идеально подойдет для наших изоброжений */
+	padding-top: 64.1%;
+}
+
+.relation__1x1 {
+	padding-top: 100%;
+}
+
+.relation__content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
+	
+	/*  border: 3px solid green;  */
+}
+
+/*Просто внешний контэйнер, ограничный по ширине на 1280px, выравнен по центру и
+имеет внутренние отступы слева и справа */
+
+.wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+
+/*ставим flex-grow: 1 и flex-basis: 100% для большой картинки */
+
+.big {
+	display: flex;
+	flex: 1 1 100%;
+	width: 40%;
+	/*странно, но если у родителя задать это свойство, 
+	картинка, да и любой другой документ не будет выпадать из родителя */
+	overflow: hidden;
+	
+	/* border: 3px solid blue;  */
+}
+
+.item-big {				
+	flex-basis:100%;
+	/* margin: 5px;  */	
+}
+
+/*ставим flex-grow: 1 и flex-basis: 100% для блоков с 2-я маленькими картинками 
+wrap тут не ставим, так как переносить картинки мы не хотим*/
+
+.product { 		 
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 100%;
+	width: 30%;
+	/*Возможно не такое уж и хорошее решение */
+	 overflow: hidden;  
+	  /* border: 3px solid blue; */  
+	 /* justify-content: center; */
+}
+
+.item {
+	/* flex: 1 1 100%;	 */
+	/* margin: 5px; */				
+}
+
+.product1 {
+	order: -1;	
+}
+
+@media screen and (max-width: 780px) {
+	.relation__3x2 {
+		padding-top: 120%;
+	}
+	.big {
+		width: 70%;
+	}
+	.product {
+		flex: 0 1 50%;
+	}
+	.product1 {
+		order: 0;
+	}
+}
+
+/*Для телефонов ставим flex-wrap: nowrap, чтобы элементы были в столбик
+и убираем распорку позиционирования .relation__ratio */
+
+@media screen and (max-width: 560px) {
+	.relation__ratio {
+		display: none;
+	}
+	.relation__content {
+		flex-wrap: nowrap;
+		position: static;
+	}
+	.big,
+	.product {
+		width: auto;
+	}
+}
+
+a {
+	display: flex;
+	flex: 1 1 100%;
+	margin: 5px;		
+}
+
+a:hover {
+	/*прозрачность */
+	 opacity: 0.9; 
+	/*3-D эффект */
+	box-shadow: 0 4px 22px rgba(0,0,0, 0.25), 	
+	inset 0 3px 0 
+	rgba(255,255,255, 0.5), 0 3px 0 rgba(0,0,0, 0.1), 
+	inset 0 0 2px rgba(0,0,0, 0.1);
+}
+a:active {
+	/*эфект нажатия */
+	box-shadow: inset 0 0 22px rgba(0,0,0,0.2), 0 3px 0 rgba(255,255,255,0.4),
+	inset 0 3px 0 rgba(0,0,0,0.1), 
+	inset 0 0 22px rgba(0,0,0,0.1);			
+}

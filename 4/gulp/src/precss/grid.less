@@ -1,0 +1,42 @@
+/*миксины или функции в less - можно использовать в других местах стилей, 
+чтобы не повторять код. Выполняют всю рутинную работу */
+
+.row-flex() {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -15px;
+}
+
+.md(@name, @value) {
+    @media screen and (max-width: @break_md) {
+		@{name}: @value;
+	}
+}
+
+//@content - это примесь или функция
+.md-block(@content) { 
+    @media screen and (max-width: @break_md) {
+        @content(); //распаковка примеси или вызов функции
+    }    
+}
+
+/*один столбец в сетке*/
+.col() {
+    margin-left: 15px;
+    margin-right: 15px;
+    box-sizing: border-box;
+}
+
+/*Примесь для задания размера сетки */
+.size(@n) {
+    @atom: 100% / 12 * @n;
+    width: ~'calc(@{atom} - 30px)';
+}
+
+.size-md(@n) {
+    @media screen and (max-width: @break_md) {
+        @atom: 100% / 12 * @n;
+        width: ~'calc(@{atom} - 30px)';
+    }
+    
+}
