@@ -1,0 +1,10 @@
+@mixin md($name, $value) {
+    @media screen and (max-width: $break_md) {
+        #{$name}: $value; //Так происходит экранирование в scss
+    }
+}
+
+@mixin flex() {
+    display: flex;
+    flex-wrap: wrap;
+}

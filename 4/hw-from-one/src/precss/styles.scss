@@ -1,0 +1,52 @@
+@import 'vars.scss';
+@import 'reset.scss';
+@import 'grid.scss';
+.wrap {
+	@include flex();
+	justify-content: center;
+	max-width: 960px;
+	margin: 0 auto;
+	height: 100%;
+	padding: 0 5px;
+	overflow: hidden;
+}
+
+section.profit {
+	background: $color_dark;
+	padding: 15px 0;
+}
+
+section.profit .item {
+	/* в дочернем флекс контэйнере, который содержит изображение и текст
+	в отношенееии 1 : 3 */
+	display: flex;
+	margin: 5px;
+	min-width: 45%;
+	/* flex-basis за который борется item(изоброжение + текст) */
+	flex-basis: 400px;
+	border: 3px solid $color_white;
+	text-align: center;
+	background: $color_white;
+	flex-grow: 1;
+	@include md(flex-wrap, wrap);
+	&:nth-child(2n) {
+		//&-section.profin .item
+		@include md(flex-direction, row-reverse);
+	}
+}
+
+section.profit .item .img {
+	/* жадность картинки 1, flex-basis: 100px */
+	flex-grow: 1;
+	flex-basis: 100px;
+	margin-left: 10px;
+}
+
+section.profit .item .text {
+	/*жадность текста 3, flex-basis: 300px */
+	flex-grow: 3;
+	flex-basis: 300px;
+	margin: 10px;
+	text-align: left;
+	font-style: italic;
+}
