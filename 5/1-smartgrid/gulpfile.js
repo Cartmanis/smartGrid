@@ -1,4 +1,3 @@
-/*Это файл-конфигурации или описания по которому gulp собирает проекты.*/
 const gulp = require('gulp'); //модуль gulp
 const autoprefixer = require('gulp-autoprefixer'); //модуль автопрефиксов
 const cleanCSS = require('gulp-clean-css'); //модуль минификации css файлов
@@ -12,9 +11,9 @@ const prepoc = require('gulp-sass');
 const config = {
     src: './src/',
     css: {
-        watch: '/precss/**/*.sass', //следим за всеми файлами
+        watch: '/precss/**/*.scss', //следим за всеми файлами
         //билдим только основной файл styles.less( который подключает вспомогательные файлы)
-        src: '/precss/styles.sass',
+        src: '/precss/styles.scss',
         dest: '/css'
     },
     html: {
@@ -22,9 +21,7 @@ const config = {
     }
 };
 
-/*команда gulp интерфейса gulp-cli запускает данный task (Задача)
-для 'default' имя писать не обязательно, для остальных task после gulp
-необходимо писать имя: например gulp test*/
+
 gulp.task('build', function () {
     //Запускаем gulp - **/ *.css означает, что мы ещем все вложенные папки */ 
     gulp.src(config.src + config.css.src)

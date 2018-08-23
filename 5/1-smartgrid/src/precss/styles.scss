@@ -1,0 +1,267 @@
+@import "project.scss";
+@import "smart-grid.scss";
+@include reset(); //примесь из файла smartgrid.scss;
+.wrapper {
+    @include wrapper(); //примесь wrapper из smartgrid.scss для центровки сайта
+}
+
+header {
+    background-color: $color_red;
+    .items {
+        @include row-flex();
+        justify-content: space-between;
+        align-items: center;
+        .logo {
+            @include row-flex();
+            color: #f0f0f0;
+            background: blue;
+            .main {
+                font-size: 24px;
+            }
+        }
+        .menu {
+            ul {
+                @include row-flex();
+            }
+            .item {
+                @include col();
+                border-radius: 5px;
+                padding: 10px;
+                &:hover {
+                    background-color: $color_black;
+                }
+                &:active {
+                    background-color: $color_black;
+                }
+                a {
+                    font-weight: bold;
+                    color: #f0f0f0;
+                    text-decoration: none;
+                }
+            }
+            list-style: none;
+        }
+    }
+}
+
+//Примесь для отладки сетки
+/* .debug {
+    @include debug(rgba(0, 0, 0, 0.5), 1px solid #ff0);
+} */
+
+h2,
+.h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.h2sub {
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.profit {
+    background: $color_black;
+    padding: 15px 0;
+    h2 {
+        color: #fff;
+    }
+    .h2sub {
+        color: $color_green;
+    }
+    .items {
+        @include row-flex(); //примесь - стратегия flex-box
+        @include plancshet(justify-content, center); //примесь сентровки для планшетов
+        justify-content: center;
+        .item {
+            @include col(); //стратегия поведения столбца по margin. Есть еще col-padding
+            /*------------------------------------*/
+            @include size(8); //8 так как columns: 24 / 3 элемента = 8
+            /*Делаем адаптив под планшеты. По умолчанию md.*/
+            @include size-plancshet(10);
+            @include size-sm(12);
+            /*Задаем любые свойства и значения для sm экрана */
+            //@include sm(background, white);
+            /*Для блока параметров нескольких параметров */
+            @include sm-block {
+                //внутри находится вызов @content
+                background-color: red;
+                padding: 50px;
+            }
+            @include size-xs(24);
+            /*сколько breakPoints столько и можно сделать адптива size-...да хоть под 
+            телевизор, если попросит заказчик */
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            .img {
+                border-radius: 50%;
+            }
+            .subtitle {
+                color: #fff;
+                font-size: 1.5rem;
+                margin: 3px 0;
+            }
+            .text {
+                font-size: 16px;
+                color: #d94948;
+            }
+        }
+    }
+}
+
+.humans {
+    background: $color_green;
+    padding: 10px 0;
+    h2 {
+        color: $color_black;
+    }
+    .h2sub {
+        color: #fff;
+    }
+    .items {
+        @include row-flex(); //задаем flex- контейнер
+        @include xs(justify-content, center);
+        .item {
+            @include col(); //стратегия
+            @include size(6); //размер
+            @include size-plancshet(12); //md
+            @include size-xs(20);
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            text-align: center;
+            background: #fff;
+            /*для первой картинки приходится использовать flex вручную - тут smartgrid не поможет...*/
+            display: flex;
+            flex-direction: column;
+            img {
+                margin: 10px auto;
+                width: 90%;
+            }
+            .subtitle {
+                color: #6cc372;
+                font-size: 24px;
+                margin: 10px;
+            }
+            .job {
+                /*прописываем отступы чтобы выровнить кнопку у первой картинки */
+                margin: auto 10px 10px 10px;
+            }
+            .follow {
+                background: #6cc372;
+                color: #fff;
+                font-size: 24px;
+                cursor: pointer;
+                border-radius: 5px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.portfolio {
+    background: $color_grey;
+    padding: 10px 0;
+    h2 {
+        color: $color_black;
+    }
+    .h2sub {
+        color: $color_green;
+    }
+    .items {
+        @include row-float(); //стратегия на float
+        .item {
+            @include col-float(); //float: left
+            @include col(); // margin, border-box
+            @include size(6);
+            @include size-plancshet(12);
+            @include size-xs(20);
+            @include size-xss(24);
+            @include shift-xs(2); //выравниваем картинки по центру для float
+            @include shift-xss(0); //отменяем offset
+            margin-top: 15px;
+            margin-bottom: 200px;
+            text-align: center;
+            img {
+                margin: 10px auto;
+                width: 100%;
+            }
+            .txt {
+                color: $color_black;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.pricing {
+    .h2sub {
+        color: $color_red;
+    }
+    .items {
+        @include row-flex();
+        align-items: flex-end;
+        .item {
+            @include col();
+            @include size(8);
+            @include size-plancshet(12);
+            @include size-xs(24);
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: -145px;
+            .title {
+                background: #fff;
+                overflow: hidden;
+            }
+            ul {
+                li {
+                    background: $color_grey;
+                    padding: 15px 0;
+                    border-bottom: 1px solid $color_black;
+                }
+            }
+            .price {
+                background: $color_red;
+                color: #fff;
+                padding: 10px 15px;
+                .cur {
+                    font-size: 1.5em;
+                }
+                .val {
+                    font-size: 3em;
+                }
+                .per {
+                    font-size: 1.2em;
+                    margin-top: 10px;
+                }
+                a {
+                    color: $color_black;
+                    text-decoration: none;
+                    background: #fff;
+                    padding: 5px 20px;
+                    border-radius: 5px;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    .items {
+        .item {
+            background: #aaa;
+            min-height: 200px;
+            .row {
+                div {
+                    background: #f50;
+                }
+            }
+        }
+    }
+}

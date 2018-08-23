@@ -10,7 +10,8 @@
     "gulp-clean-css": "^3.10.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-sourcemaps": "^2.6.4",
+    "smart-grid": "^2.1.2"
   },
   "devDependencies": {},
   "scripts": {
