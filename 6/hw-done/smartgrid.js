@@ -2,7 +2,7 @@ const smartgrid = require('smart-grid');
 
 //объект настроек для smartgrid
 const settings = {
-    columns: 24, //настройка - сколько будет сеток на сайте
+    columns: 24, //настройка - сколько будет колонок в сетке
     offset: '10px', //растояние (margin) между колонками (сетками)
     container: { //настройки для примеси wrapper-для центровки сайта
         maxWidth: '960px',

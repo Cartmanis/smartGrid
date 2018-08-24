@@ -1,0 +1,16 @@
+/*файл кросбраузернности - в данном случае поддержка ie 9 */
+
+@import "project.scss";
+@import "smart-grid.scss";
+.humans {
+    .items {
+        @include row-float(); //задаем верстку на float, так как ie не работает на flex
+        @include shift-xs-left(1);
+        .item {
+            @include col-float(); //стратегия
+            &:nth-child(odd) {
+                @include md(clear, both);
+            }
+        }
+    }
+}

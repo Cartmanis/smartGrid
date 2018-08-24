@@ -186,7 +186,7 @@ h2,
             @include shift-xs(2); //выравниваем картинки по центру для float
             @include shift-xss(0); //отменяем offset
             margin-top: 15px;
-            margin-bottom: 200px;
+            margin-bottom: 200px; //Дз
             text-align: center;
             img {
                 margin: 10px auto;
@@ -205,6 +205,7 @@ h2,
         color: $color_red;
     }
     .items {
+        //Дз
         @include row-flex();
         align-items: flex-end;
         .item {

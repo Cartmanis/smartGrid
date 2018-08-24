@@ -20,6 +20,9 @@ header {
                 display: inline-block;
                 font-size: 25px;
             }
+            .text {
+                margin-top: 5px;
+            }
         }
         .menu {
             ul {
@@ -167,7 +170,9 @@ h2,
 
 .portfolio {
     background: $color_grey;
-    padding: 10px 0;
+    /*5 Дз- у меня было то же самое, но с margin у item */
+    padding: 10px 0 200px;
+    @include sm(padding, 10px 0);
     h2 {
         color: $color_black;
     }
@@ -186,7 +191,6 @@ h2,
             @include shift-xs(2); //выравниваем картинки по центру для float
             @include shift-xss(0); //отменяем offset
             margin-top: 15px;
-            margin-bottom: 200px;
             text-align: center;
             img {
                 margin: 10px auto;
@@ -205,17 +209,22 @@ h2,
         color: $color_red;
     }
     .items {
+        //5 Дз
         @include row-flex();
         align-items: flex-end;
+        justify-content: center;
+        /*5 Дз - я прописал в item... */
+        margin-top: -145px;
+        @include sm(margin-top, 10px);
         .item {
             @include col();
             @include size(8);
-            @include size-plancshet(12);
-            @include size-xs(24);
+            @include size-sm(16);
+            @include size-xs(20);
             text-align: center;
             border-radius: 10px;
             overflow: hidden;
-            margin-top: -145px;
+            ;
             .title {
                 background: #fff;
                 overflow: hidden;
@@ -254,14 +263,54 @@ h2,
     }
 }
 
+.test {
+    margin: 20px 0;
+    .items {
+        @include row-flex();
+        .item {
+            /*стратегия col-padding для сливания цветов блоков */
+            @include col-padding();
+            min-height: 100px;
+        }
+        .item-left {
+            background-color: #ccc;
+            @include size(8);
+            padding-right: $offset;
+            padding-left: 0;
+            margin-left: $offset_one_side;
+        }
+        .item-right {
+            background-color: #f90;
+            @include size(16);
+            padding-left: 0;
+            padding-right: 0;
+            margin-right: $offset_one_side;
+        }
+    }
+}
+
+/*Пример сетки вложенной в другую сетку */
+
 footer {
     .items {
+        @include row-flex();
         .item {
+            @include col();
+            @include size(8);
+            @include size-sm(24);
             background: #aaa;
             min-height: 200px;
+            /*прослойка для вложенной сетки( или flex-box)*/
             .row {
+                @include row-flex();
                 div {
+                    @include col();
+                    @include size(24);
+                    @include size-sm(8);
+                    @include size-xs(24);
                     background: #f50;
+                    margin-bottom: 5px;
+                    padding: 5px;
                 }
             }
         }
